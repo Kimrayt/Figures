@@ -3,6 +3,7 @@ package com.company;
 import Figures.Figure;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.accessibility.Accessible;
 import javax.swing.*;
 import java.io.*;
 import java.text.ParseException;
@@ -87,6 +88,20 @@ public class Main {
             public void panelContent (ArrayList<Figure> figures){
                 this.figures = figures;
             }
+            class JPanel extends JComponent implements Accessible{
+            JPanel(){
+                JLabel x1 = new JLabel("x1: ");
+                JTextField x1value= new JTextField(0);
+                JLabel x2 = new JLabel("x2: ");
+                JTextField x2value= new JTextField(0);
+                JLabel y1 = new JLabel("y1: ");
+                JTextField y1value= new JTextField(0);
+                JLabel y2 = new JLabel("y2: ");
+                JTextField y2value= new JTextField(0);
+
+                }
+            }
+
 
 
 
