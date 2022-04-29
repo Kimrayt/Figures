@@ -2,17 +2,24 @@ package Figures;
 
 import Interfaces.ICircle;
 import com.company.Point;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BlueCircle implements ICircle {
+public class BlueCircle extends Figure implements ICircle, Serializable {
 
+    @JsonIgnore
     public ArrayList<Point> points;
 
+    @JsonIgnore
     public BlueCircle (ArrayList<Point> points){
         this.points = points;
     }
 
     @Override
+    @JsonFormat(pattern = "radius : ")
     public double getRadius() {
         double radius = 0;
         for (int i = 0; i < points.size(); i++) {
@@ -23,12 +30,14 @@ public class BlueCircle implements ICircle {
     }
 
     @Override
+    @JsonFormat(pattern = "area : ")
     public double getArea() {
         double area = Math.PI*(getRadius()*getRadius());
         return area;
     }
 
     @Override
+    @JsonFormat(pattern = "perimeter : ")
     public double getPerimeter() {
         double perimeter = Math.PI*2*getRadius();
         return perimeter;

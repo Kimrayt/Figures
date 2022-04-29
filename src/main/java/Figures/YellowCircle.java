@@ -5,7 +5,7 @@ import com.company.Point;
 
 import java.util.ArrayList;
 
-public class YellowCircle implements ICircle {
+public class YellowCircle extends Figure implements ICircle {
 
 
     public ArrayList<Point> points;

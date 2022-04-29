@@ -2,18 +2,24 @@ package Figures;
 
 import Interfaces.ITriangle;
 import com.company.Point;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class YellowTriangle implements ITriangle {
+public class BlueTriangle extends Figure implements ITriangle, Serializable {
 
+    @JsonIgnore
     public ArrayList<Point> points;
 
-    public YellowTriangle (ArrayList<Point> points){
+    @JsonIgnore
+    public BlueTriangle (ArrayList<Point> points){
         this.points = points;
     }
 
     @Override
+    @JsonFormat(pattern = "area : ")
     public double getArea() {
         double area = 0;
         for (int i = 0; i < points.size(); i++) {
@@ -24,6 +30,7 @@ public class YellowTriangle implements ITriangle {
     }
 
     @Override
+    @JsonFormat(pattern = "perimeter : ")
     public double getPerimeter() {
         double perimeter = 0;
         for (int i = 0; i < points.size(); i++) {
@@ -33,4 +40,5 @@ public class YellowTriangle implements ITriangle {
         perimeter += Math.sqrt(Math.pow(points.get(points.size() - 1).getX() - points.get(0).getX(),2) + Math.pow(points.get(points.size() - 1).getY() - points.get(0).getY(),2));
         return perimeter;
     }
+
 }

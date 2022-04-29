@@ -14,6 +14,7 @@ public class SavedFigure implements Serializable {
     private double area;
     private double perimeter;
 
+
     public SavedFigure(ArrayList<Point> points, double area, double perimeter){
         this.points = points;
         this.area = area;
@@ -44,6 +45,6 @@ public class SavedFigure implements Serializable {
         return points;
     }
     public String toString(){
-        return "Saved figure is {" + this.getClass().getSimpleName() + " with area " + this.area + " and perimeter " + this.perimeter +" }";
+        return "Saved figure is {" + getClass().getSimpleName() + " with area " + this.area + " and perimeter " + this.perimeter +" }";
     }
 }

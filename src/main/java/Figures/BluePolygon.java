@@ -2,18 +2,24 @@ package Figures;
 
 import Interfaces.IPolygon;
 import com.company.Point;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class YellowPolygon implements IPolygon {
+public class BluePolygon extends Figure implements IPolygon, Serializable {
 
+    @JsonIgnore
     public ArrayList<Point> points;
 
-    public YellowPolygon (ArrayList<Point> points){
+    @JsonIgnore
+    public BluePolygon (ArrayList<Point> points){
         this.points = points;
     }
 
     @Override
+    @JsonFormat(pattern = "area : ")
     public double getArea() {
         double area = 0;
         for (int i = 0; i < points.size(); i++) {
@@ -24,6 +30,7 @@ public class YellowPolygon implements IPolygon {
     }
 
     @Override
+    @JsonFormat(pattern = "perimeter : ")
     public double getPerimeter() {
         double perimeter = 0;
         for (int i = 0; i < points.size(); i++) {

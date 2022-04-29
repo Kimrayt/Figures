@@ -3,14 +3,13 @@ package Figures;
 import Interfaces.IPolygon;
 import com.company.Point;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BluePolygon implements IPolygon, Serializable {
+public class YellowPolygon extends Figure implements IPolygon {
 
     public ArrayList<Point> points;
 
-    public BluePolygon (ArrayList<Point> points){
+    public YellowPolygon (ArrayList<Point> points){
         this.points = points;
     }
 

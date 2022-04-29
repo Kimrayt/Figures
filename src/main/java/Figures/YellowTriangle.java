@@ -5,11 +5,11 @@ import com.company.Point;
 
 import java.util.ArrayList;
 
-public class BlueTriangle implements ITriangle {
+public class YellowTriangle extends Figure implements ITriangle {
 
     public ArrayList<Point> points;
 
-    public BlueTriangle (ArrayList<Point> points){
+    public YellowTriangle (ArrayList<Point> points){
         this.points = points;
     }
 
@@ -33,5 +33,4 @@ public class BlueTriangle implements ITriangle {
         perimeter += Math.sqrt(Math.pow(points.get(points.size() - 1).getX() - points.get(0).getX(),2) + Math.pow(points.get(points.size() - 1).getY() - points.get(0).getY(),2));
         return perimeter;
     }
-
 }
