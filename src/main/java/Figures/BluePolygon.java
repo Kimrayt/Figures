@@ -11,11 +11,8 @@ import java.util.ArrayList;
 public class BluePolygon extends Figure implements IPolygon, Serializable {
 
     @JsonIgnore
-    public ArrayList<Point> points;
-
-    @JsonIgnore
     public BluePolygon (ArrayList<Point> points){
-        this.points = points;
+        super(points);
     }
 
     @Override

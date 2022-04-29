@@ -7,10 +7,8 @@ import java.util.ArrayList;
 
 public class YellowTriangle extends Figure implements ITriangle {
 
-    public ArrayList<Point> points;
-
-    public YellowTriangle (ArrayList<Point> points){
-        this.points = points;
+   public YellowTriangle (ArrayList<Point> points){
+        super(points);
     }
 
     @Override

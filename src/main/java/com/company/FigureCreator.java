@@ -20,7 +20,7 @@ public class FigureCreator {
                 creator = new BlueFactory();
                 BlueTriangle bt = (BlueTriangle) creator.createTriangle(points);
                 return bt;
-            } else if (points.size() > 3) {
+            } else if (points.size() >= 4) {
                 IFigureFactory creator;
                 creator = new BlueFactory();
                 BluePolygon bp = (BluePolygon) creator.createPolygon(points);
@@ -40,7 +40,7 @@ public class FigureCreator {
                 creator = new YellowFactory();
                 YellowTriangle bt = (YellowTriangle) creator.createTriangle(points);
                 return bt;
-            } else if (points.size() > 3) {
+            } else if (points.size() >= 4) {
                 IFigureFactory creator;
                 creator = new YellowFactory();
                 YellowPolygon bp = (YellowPolygon) creator.createPolygon(points);

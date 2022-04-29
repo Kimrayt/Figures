@@ -11,11 +11,8 @@ import java.util.ArrayList;
 public class BlueCircle extends Figure implements ICircle, Serializable {
 
     @JsonIgnore
-    public ArrayList<Point> points;
-
-    @JsonIgnore
     public BlueCircle (ArrayList<Point> points){
-        this.points = points;
+        super(points);
     }
 
     @Override

@@ -1,22 +1,20 @@
 package com.company;
 
-import FactoryArea.BlueFactory;
-import Figures.BlueCircle;
-import Figures.BluePolygon;
-import Figures.BlueTriangle;
 import Figures.Figure;
-import Interfaces.IFigureFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.swing.*;
 import java.io.*;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static com.company.FigureCreator.createFigure;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
+
+
+
+
         ArrayList<Point> polygonPoints = new ArrayList<>();
         Point p1 = new Point (1, 3);
         Point p2 = new Point (2, 5);
@@ -39,13 +37,13 @@ public class Main {
         circlePoints.add(p7);
 
         ArrayList<Point> trianglePoints = new ArrayList<>();
-        polygonPoints.add (p8);
-        polygonPoints.add (p9);
-        polygonPoints.add (p10);
+        trianglePoints.add (p8);
+        trianglePoints.add (p9);
+        trianglePoints.add (p10);
 
-        BluePolygon bp = (BluePolygon) FigureCreator.createFigure("blue", polygonPoints);
-        BlueTriangle bt = (BlueTriangle) FigureCreator.createFigure("blue", trianglePoints);
-        BlueCircle bc = (BlueCircle) FigureCreator.createFigure("blue", circlePoints);
+        Figure bp = FigureCreator.createFigure("blue", polygonPoints);
+        Figure bt = FigureCreator.createFigure("blue", trianglePoints);
+        Figure bc = FigureCreator.createFigure("blue", circlePoints);
 
         ArrayList<Figure> figuresBlue = new ArrayList<>();
         figuresBlue.add(bp);
@@ -72,6 +70,29 @@ public class Main {
         String jsonlist = mapper.writeValueAsString(figuresBlue);
         System.out.println(jsonlist);
 
+        /*String output = "{\" class\":\" Figure\",\"area\": 20\",\"perimeter\": 10}";
+        @JsonDeserialize(as = ArrayList.class)
+        Figure savedBlueFigures = mapper.readValue(output, Figure.class);
+        System.out.println(savedBlueFigures);*/
+
+        class figureJFrame extends JFrame{
+            ArrayList<Figure> figures;
+            JFrame figureJFrame = new JFrame();
+            figureJFrame(){
+            figureJFrame.setTitle("Pure Suffering");
+            figureJFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            figureJFrame.setSize(720, 480);
+            figureJFrame.setVisible(true);
+            }
+            public void panelContent (ArrayList<Figure> figures){
+                this.figures = figures;
+            }
+
+
+
+
+
+        }
 
     }
 }

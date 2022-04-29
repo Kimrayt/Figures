@@ -1,5 +1,7 @@
 package com.company;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;

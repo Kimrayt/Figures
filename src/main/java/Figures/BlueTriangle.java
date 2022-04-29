@@ -11,11 +11,8 @@ import java.util.ArrayList;
 public class BlueTriangle extends Figure implements ITriangle, Serializable {
 
     @JsonIgnore
-    public ArrayList<Point> points;
-
-    @JsonIgnore
     public BlueTriangle (ArrayList<Point> points){
-        this.points = points;
+        super(points);
     }
 
     @Override

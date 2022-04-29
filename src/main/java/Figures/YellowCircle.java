@@ -7,11 +7,8 @@ import java.util.ArrayList;
 
 public class YellowCircle extends Figure implements ICircle {
 
-
-    public ArrayList<Point> points;
-
-    public YellowCircle (ArrayList<Point> points){
-        this.points = points;
+public YellowCircle (ArrayList<Point> points){
+        super(points);
     }
 
     @Override

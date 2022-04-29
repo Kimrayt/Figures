@@ -7,10 +7,8 @@ import java.util.ArrayList;
 
 public class YellowPolygon extends Figure implements IPolygon {
 
-    public ArrayList<Point> points;
-
-    public YellowPolygon (ArrayList<Point> points){
-        this.points = points;
+  public YellowPolygon (ArrayList<Point> points){
+        super(points);
     }
 
     @Override
