@@ -5,10 +5,13 @@ import com.company.Point;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class BlueCircle extends Figure implements ICircle, Serializable {
+
+    private Color circleColor = Color.BLUE;
 
     @JsonIgnore
     public BlueCircle (ArrayList<Point> points){
@@ -38,5 +41,17 @@ public class BlueCircle extends Figure implements ICircle, Serializable {
     public double getPerimeter() {
         double perimeter = Math.PI*2*getRadius();
         return perimeter;
+    }
+
+    public Color getCircleColor() {
+        return circleColor;
+    }
+    public int getX(){
+        int x = (int)points.get(0).getX();
+        return x;
+    }
+    public int getY(){
+        int y = (int)points.get(0).getX();
+        return y;
     }
 }

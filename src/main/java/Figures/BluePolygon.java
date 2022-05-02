@@ -5,10 +5,13 @@ import com.company.Point;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class BluePolygon extends Figure implements IPolygon, Serializable {
+
+    private Color polygonColor = Color.BLUE;
 
     @JsonIgnore
     public BluePolygon (ArrayList<Point> points){
@@ -36,5 +39,9 @@ public class BluePolygon extends Figure implements IPolygon, Serializable {
         }
         perimeter += Math.sqrt(Math.pow(points.get(points.size() - 1).getX() - points.get(0).getX(),2) + Math.pow(points.get(points.size() - 1).getY() - points.get(0).getY(),2));
         return perimeter;
+    }
+
+    public Color getPolygonColor() {
+        return polygonColor;
     }
 }

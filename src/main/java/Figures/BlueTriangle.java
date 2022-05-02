@@ -5,10 +5,13 @@ import com.company.Point;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class BlueTriangle extends Figure implements ITriangle, Serializable {
+
+    private Color triangleColor = Color.BLUE;
 
     @JsonIgnore
     public BlueTriangle (ArrayList<Point> points){
@@ -38,4 +41,7 @@ public class BlueTriangle extends Figure implements ITriangle, Serializable {
         return perimeter;
     }
 
+    public Color getTriangleColor() {
+        return triangleColor;
+    }
 }
