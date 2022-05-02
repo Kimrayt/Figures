@@ -1,5 +1,8 @@
 package Graphic;
 
+import Figures.BlueCircle;
+import com.company.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -39,14 +42,19 @@ public class FiguresFrame {
         statusLabel.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
 
         Box leftPanel = createLeftPanel();
-        mainContainer.add(leftPanel, BorderLayout.PAGE_END);
+        mainContainer.add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
+
+        Box rightPanel = createRightPanel();
+        mainContainer.add(rightPanel, BorderLayout.AFTER_LAST_LINE);
 
         graphic = new FiguresGraphic();
         graphic.setBackground(Color.WHITE);
         mainContainer.add(graphic);
+
+
     }
     private Box createLeftPanel() {
-        Box panel = Box.createVerticalBox();
+        Box panel = Box.createHorizontalBox();
         JLabel drawing = new JLabel();
         drawing.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
         panel.add(drawing);
@@ -64,8 +72,32 @@ public class FiguresFrame {
         createTriangle.setSize(80, 20);
 
         panel.add(createCircle);
+
+        createCircle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         panel.add(createTriangle);
         panel.add(createPolygon);
+
+        return panel;
+    }
+    private Box createRightPanel(){
+        Box panel = Box.createHorizontalBox();
+        JLabel drawing = new JLabel();
+        drawing.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
+        panel.add(drawing);
+
+        JButton setColorBlue = new JButton ("Make it Blue");
+        JButton setColorYellow = new JButton ("Make it Yellow");
+
+        setColorBlue.setFont(Font.getFont(Font.SANS_SERIF));
+        setColorYellow.setFont(Font.getFont(Font.SANS_SERIF));
+
+        panel.add(setColorBlue);
+        panel.add(setColorYellow);
 
         return panel;
     }

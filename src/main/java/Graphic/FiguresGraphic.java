@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static com.company.Main.bc;
+
 public class FiguresGraphic extends JPanel {
 
     private Color graphicColor = Color.BLACK;
@@ -60,7 +62,7 @@ public class FiguresGraphic extends JPanel {
             g.setColor(Color.yellow);
         }
     }
-    private void drawCircle (BlueCircle bc, Graphics g){
+    public void createBlueCircle (Graphics g){
         g.drawOval(bc.getX(), bc.getY(), (int)bc.getRadius(), (int)bc.getRadius());
     }
 }

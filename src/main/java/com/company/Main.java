@@ -1,5 +1,6 @@
 package com.company;
 
+import Figures.BlueCircle;
 import Figures.Figure;
 import Graphic.FiguresFrame;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +12,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 
 public class Main {
+
+    public static BlueCircle bc;
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
 
