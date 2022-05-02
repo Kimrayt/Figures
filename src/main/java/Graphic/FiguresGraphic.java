@@ -2,14 +2,15 @@ package Graphic;
 
 import Figures.BlueCircle;
 import Figures.Figure;
+import com.company.Main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-import static com.company.Main.bc;
-
 public class FiguresGraphic extends JPanel {
+
+    public ArrayList<Figure> figuresBlue;
 
     private Color graphicColor = Color.BLACK;
     private int width;
@@ -22,6 +23,8 @@ public class FiguresGraphic extends JPanel {
 
         drawGrid (g);
         drawAxis (g);
+        createBlueCircle (g);
+        drawFigureWithSquares (g);
     }
     private void drawGrid(Graphics g) {
         g.setColor(Color.lightGray);
@@ -48,10 +51,9 @@ public class FiguresGraphic extends JPanel {
         g.drawLine(width/2, 0, width/2, height);
         g.drawLine(0, height/2, width, height/2);
     }
-    private void drawFigureWithSquares (ArrayList<Point> points, Graphics g, Figure p){
-        for (int i=0; i < points.size() -1; i++){
-            g.drawLine((int)points.get(i).getX(), (int)points.get(i).getY(), (int)points.get(i+1).getX(), (int)points.get(i+1).getY());
-            g.fillRect((int)points.get(i).getX(), (int)points.get(i).getY(), (int)points.get(i+1).getX(), (int)points.get(i+1).getY());
+    private void drawFigureWithSquares (Graphics g){
+        for (int i=0; i < figuresBlue.get(0).getPoints().size() -1; i++){
+            g.drawLine((int)figuresBlue.get(0).getPoints().get(i).getX(), (int)figuresBlue.get(0).getPoints().get(i).getY(), (int)figuresBlue.get(0).getPoints().get(i+1).getX(), (int)figuresBlue.get(0).getPoints().get(i+1).getY());
         }
     }
     private void setColor (Graphics g,String color){
@@ -62,7 +64,8 @@ public class FiguresGraphic extends JPanel {
             g.setColor(Color.yellow);
         }
     }
+
     public void createBlueCircle (Graphics g){
-        g.drawOval(bc.getX(), bc.getY(), (int)bc.getRadius(), (int)bc.getRadius());
+        g.drawOval((int)figuresBlue.get(3).getPoints().get(0).getX(), (int)figuresBlue.get(3).getPoints().get(0).getY(), (int)figuresBlue.get(3).getRadius(), (int)figuresBlue.get(3).getRadius());
     }
 }

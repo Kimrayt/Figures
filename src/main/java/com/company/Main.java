@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static BlueCircle bc;
+    public ArrayList<Figure> figuresBlue;
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
 
