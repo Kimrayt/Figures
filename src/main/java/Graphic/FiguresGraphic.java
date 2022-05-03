@@ -2,7 +2,9 @@ package Graphic;
 
 import Figures.BlueCircle;
 import Figures.Figure;
+import com.company.FiguresArray;
 import com.company.Main;
+import com.company.PointsArray;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,9 +12,9 @@ import java.util.ArrayList;
 
 public class FiguresGraphic extends JPanel {
 
-    public ArrayList<Figure> figuresBlue;
+    //public ArrayList<Figure> figuresBlue;
 
-    private Color graphicColor = Color.BLACK;
+    private static Color figureColor = Color.BLACK;
     private int width;
     private int height;
 
@@ -23,9 +25,9 @@ public class FiguresGraphic extends JPanel {
 
         drawGrid (g);
         drawAxis (g);
-        createBlueCircle (g);
-        drawFigureWithSquares (g);
+        FiguresFrame.draw(g);
     }
+
     private void drawGrid(Graphics g) {
         g.setColor(Color.lightGray);
 
@@ -51,21 +53,24 @@ public class FiguresGraphic extends JPanel {
         g.drawLine(width/2, 0, width/2, height);
         g.drawLine(0, height/2, width, height/2);
     }
-    private void drawFigureWithSquares (Graphics g){
-        for (int i=0; i < figuresBlue.get(0).getPoints().size() -1; i++){
-            g.drawLine((int)figuresBlue.get(0).getPoints().get(i).getX(), (int)figuresBlue.get(0).getPoints().get(i).getY(), (int)figuresBlue.get(0).getPoints().get(i+1).getX(), (int)figuresBlue.get(0).getPoints().get(i+1).getY());
-        }
-    }
-    private void setColor (Graphics g,String color){
-        if (color == "blue"){
-            g.setColor(Color.BLUE);
-        }
-        else if (color == "yellow"){
-            g.setColor(Color.yellow);
+    public void drawFigureWithSquares(Graphics g, int numberOfPoints){
+        super.paint(g);
+        for (int i = 0; i < (numberOfPoints - 1); i++){
+            g.drawLine((int)FiguresArray.getFigure(0).getPoints().get(i).getX(), (int)FiguresArray.getFigure(0).getPoints().get(i).getY(), (int)FiguresArray.getFigure(0).getPoints().get(i+1).getX(), (int)FiguresArray.getFigure(0).getPoints().get(i+1).getY());
+            g.setColor(figureColor);
         }
     }
 
-    public void createBlueCircle (Graphics g){
-        g.drawOval((int)figuresBlue.get(3).getPoints().get(0).getX(), (int)figuresBlue.get(3).getPoints().get(0).getY(), (int)figuresBlue.get(3).getRadius(), (int)figuresBlue.get(3).getRadius());
+    public void createBlueCircle(Graphics g){
+        super.paint(g);
+        g.drawOval((int)FiguresArray.getFigure(2).getPoints().get(0).getX(), (int)FiguresArray.getFigure(2).getPoints().get(0).getY(), (int)FiguresArray.getFigure(2).getRadius(), (int)FiguresArray.getFigure(2).getRadius());
+        g.setColor(figureColor);
+    }
+    public static void setFigureColor (String color){
+        figureColor = Color.getColor(color);
+    }
+    public static void rotate (Graphics g, double angle){
+        Graphics2D g2d = (Graphics2D)g;
+        g2d.rotate(Math.toRadians(angle));
     }
 }

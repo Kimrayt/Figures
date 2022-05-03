@@ -18,51 +18,24 @@ public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException, ParseException {
 
 
-        ArrayList<Point> polygonPoints = new ArrayList<>();
-        Point p1 = new Point(1, 3);
-        Point p2 = new Point(2, 5);
-        Point p3 = new Point(3, 6);
-        Point p4 = new Point(4, 4);
-        Point p5 = new Point(5, 5);
-        Point p6 = new Point(7, 8);
-        Point p7 = new Point(8, 9);
-        Point p8 = new Point(9, 10);
-        Point p9 = new Point(10, 12);
-        Point p10 = new Point(12, 14);
+        Figure bp = FigureCreator.createFigure("blue", PointsArray.createArray(4));
+        Figure bt = FigureCreator.createFigure("blue", PointsArray.createArray(3));
 
-        polygonPoints.add(p1);
-        polygonPoints.add(p2);
-        polygonPoints.add(p3);
-        polygonPoints.add(p4);
 
-        ArrayList<Point> circlePoints = new ArrayList<>();
-        circlePoints.add(p6);
-        circlePoints.add(p7);
+        FiguresArray.addFigure(bp);
+        FiguresArray.addFigure(bt);
 
-        ArrayList<Point> trianglePoints = new ArrayList<>();
-        trianglePoints.add(p8);
-        trianglePoints.add(p9);
-        trianglePoints.add(p10);
 
-        Figure bp = FigureCreator.createFigure("blue", polygonPoints);
-        Figure bt = FigureCreator.createFigure("blue", trianglePoints);
-        Figure bc = FigureCreator.createFigure("blue", circlePoints);
+        SavedFigure savedPolygon = new SavedFigure(bp.getArray(), bp.getArea(), bp.getPerimeter());
 
-        ArrayList<Figure> figuresBlue = new ArrayList<>();
-        figuresBlue.add(bp);
-        figuresBlue.add(bt);
-        figuresBlue.add(bc);
-
-        SavedFigure savedPolygon = new SavedFigure(polygonPoints, bp.getArea(), bp.getPerimeter());
-
-        FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Kimrayt\\Documents\\.IdeaSerialization\\savedFigure.ser");
+        FileOutputStream outputStream = new FileOutputStream("C:\\Users\\Меланхолия попугая\\Downloads\\Figures-master\\src\\main\\java\\com\\savedFigure.json");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 
         objectOutputStream.writeObject(savedPolygon);
 
         objectOutputStream.close();
 
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Kimrayt\\Documents\\.IdeaSerialization\\savedFigure.ser");
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\Меланхолия попугая\\Downloads\\Figures-master\\src\\main\\java\\com\\savedFigure.json");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
         SavedFigure previouslySavedPolygon = (SavedFigure) objectInputStream.readObject();
@@ -70,7 +43,7 @@ public class Main {
         System.out.println(previouslySavedPolygon);
 
         ObjectMapper mapper = new ObjectMapper();
-        String jsonlist = mapper.writeValueAsString(figuresBlue);
+        String jsonlist = mapper.writeValueAsString(FiguresArray.getArray());
         System.out.println(jsonlist);
 
         /*String output = "{\" class\":\" Figure\",\"area\": 20\",\"perimeter\": 10}";
@@ -80,7 +53,6 @@ public class Main {
 
         FiguresFrame frame = new FiguresFrame();
         frame.show();
-
     }
 
 }
