@@ -1,21 +1,39 @@
 package Graphic;
 
 import Figures.BlueCircle;
+import Figures.Figure;
+import com.company.FigureCreator;
+import com.company.FiguresArray;
 import com.company.Main;
+import com.company.PointsArray;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 
-public class FiguresFrame {
+public class FiguresFrame extends JFrame implements ActionListener{
+    public static boolean makeCircle = false;
+    public static boolean makeTriangle = false;
+    public static boolean makePolygon = false;
+
+    public static void setMakeCircle(boolean makeCircle) {
+        FiguresFrame.makeCircle = makeCircle;
+    }
+    public static void setMakeTriangle(boolean makeTriangle) {
+        FiguresFrame.makeTriangle = makeTriangle;
+    }
+    public static void setMakePolygon(boolean makePolygon) {
+        FiguresFrame.makePolygon = makePolygon;
+    }
+
     private JFrame frame;
     private JLabel statusLabel;
     private JTextField colorTextFiled;
     private JButton createTriangle;
     private JButton createPolygon;
     private JButton createCircle;
-    private FiguresGraphic graphic;
+    private static FiguresGraphic graphic;
 
     public FiguresFrame(){
         createFrame();
@@ -56,7 +74,7 @@ public class FiguresFrame {
     private Box createLeftPanel() {
         Box panel = Box.createHorizontalBox();
         JLabel drawing = new JLabel();
-        drawing.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
+        //drawing.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
         panel.add(drawing);
 
         JButton createTriangle = new JButton ("Create a triangle");
@@ -71,14 +89,28 @@ public class FiguresFrame {
         createPolygon.setSize(80, 20);
         createTriangle.setSize(80, 20);
 
-        panel.add(createCircle);
-
-        createCircle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        createCircle.addActionListener(e -> {
+            Figure bc = FigureCreator.createFigure("blue", PointsArray.createArray(2));
+            FiguresArray.addFigure(bc);
+            setMakeCircle(true);
+            repaint();
         });
+
+        createTriangle.addActionListener(e -> {
+            Figure bt = FigureCreator.createFigure("blue", PointsArray.createArray(3));
+            FiguresArray.addFigure(bt);
+            setMakeTriangle(true);
+            repaint();
+        });
+
+        createPolygon.addActionListener(e -> {
+            Figure bp = FigureCreator.createFigure("blue", PointsArray.createArray(4));
+            FiguresArray.addFigure(bp);
+            setMakePolygon(true);
+            repaint();
+        });
+
+        panel.add(createCircle);
         panel.add(createTriangle);
         panel.add(createPolygon);
 
@@ -87,7 +119,7 @@ public class FiguresFrame {
     private Box createRightPanel(){
         Box panel = Box.createHorizontalBox();
         JLabel drawing = new JLabel();
-        drawing.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
+        //drawing.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
         panel.add(drawing);
 
         JButton setColorBlue = new JButton ("Make it Blue");
@@ -96,9 +128,33 @@ public class FiguresFrame {
         setColorBlue.setFont(Font.getFont(Font.SANS_SERIF));
         setColorYellow.setFont(Font.getFont(Font.SANS_SERIF));
 
+        setColorBlue.addActionListener(e -> {
+            FiguresGraphic.setFigureColor("Blue");
+        });
+        setColorYellow.addActionListener(e -> {
+            FiguresGraphic.setFigureColor("Yellow");
+        });
+
         panel.add(setColorBlue);
         panel.add(setColorYellow);
 
         return panel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (makePolygon == true || makeCircle == true || makeTriangle == true){
+            graphic.repaint();}
+    }
+    public static void draw (Graphics g){
+        if (makePolygon == true){
+            graphic.drawFigureWithSquares(g, 4);
+        }
+        else if (makeCircle == true){
+            graphic.createBlueCircle(g);
+        }
+        else if (makeTriangle == true){
+            graphic.drawFigureWithSquares(g, 3);
+        }
     }
 }

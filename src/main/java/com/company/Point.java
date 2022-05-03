@@ -1,5 +1,6 @@
 package com.company;
 
+import java.awt.geom.AffineTransform;
 import java.io.Serializable;
 
 public class Point implements Serializable {
@@ -18,5 +19,13 @@ public class Point implements Serializable {
     }
     public String toString (){
         return "Point: "+this.getX() + "; "+ this.getY();
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 }
