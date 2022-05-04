@@ -61,8 +61,8 @@ public class FiguresGraphic extends JPanel {
         g.drawLine(0, height/2, width, height/2);
     }
     public void drawFigureWithSquares(Graphics g, int numberOfPoints){
-        super.paint(g);
-        drawGrid(g);
+        //super.paint(g);
+        //drawGrid(g);
         if (FiguresFrame.getColor() == "Blue"){
             g.setColor(Color.BLUE);}
         else if (FiguresFrame.getColor() == "Yellow"){
@@ -72,13 +72,13 @@ public class FiguresGraphic extends JPanel {
             g.setColor(Color.BLACK);
         }
         for (int i = 0; i < (numberOfPoints - 1); i++){
-            g.drawLine((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i).getX(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i).getY(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i+1).getX(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i+1).getY());
+            g.drawLine(((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i).getX()+getWidth()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i).getY()+getHeight()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i+1).getX()+getWidth()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(i+1).getY())+getHeight()/2);
         }
-        g.drawLine((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getX(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getY(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(numberOfPoints-1).getX(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(numberOfPoints-1).getY());
+        g.drawLine(((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getX()+getWidth()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getY()+getHeight()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(numberOfPoints-1).getX()+getWidth()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(numberOfPoints-1).getY()+getHeight()/2));
     }
 
     public void createBlueCircle(Graphics g){
-        super.paint(g);
+        //super.paint(g);
         if (FiguresFrame.getColor() == "Blue"){
         g.setColor(Color.BLUE);}
         else if (FiguresFrame.getColor() == "Yellow"){
@@ -87,12 +87,12 @@ public class FiguresGraphic extends JPanel {
         else {
             g.setColor(Color.BLACK);
         }
-        g.drawOval((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getX(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getY(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getRadius(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getRadius());
-        drawGrid(g);
+        g.drawOval((int)(FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getX()+getWidth()/2-(int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getRadius()/2), ((int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getPoints().get(0).getY()+getHeight()/2-(int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getRadius()/2), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getRadius(), (int)FiguresArray.getFigure(FiguresArray.getLastIndex()).getRadius());
+        //drawGrid(g);
     }
-    public static void setFigureColor (String color){
+    /*public static void setFigureColor (String color){
         figureColor = Color.getColor(color);
-    }
+    }*/
     public static void rotate (Graphics g, double angle){
         Graphics2D g2d = (Graphics2D)g;
         g2d.rotate(Math.toRadians(angle));

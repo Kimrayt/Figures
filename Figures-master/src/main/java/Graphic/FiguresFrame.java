@@ -35,7 +35,7 @@ public class FiguresFrame extends JFrame implements ActionListener{
     private void createFrame(){
         frame = new JFrame("Pure suffering");
         frame.setSize(720, 480);
-        frame.setBounds(1, 1, 720, 480);
+        //frame.setBounds(1, 1, 720, 480);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
     public void show(){
@@ -46,21 +46,22 @@ public class FiguresFrame extends JFrame implements ActionListener{
         Container mainContainer = frame.getContentPane();
         mainContainer.setLayout(new BorderLayout());
 
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setBackground(Color.pink);
+        /*JPanel bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.pink);*/
 
-        mainContainer.add(bottomPanel);
+        //mainContainer.add(bottomPanel);
         statusLabel = new JLabel("Let's draw a figure");
         statusLabel.setIcon(new ImageIcon("C:\\Users\\Kimrayt\\Download\\artist.png"));
 
         Box leftPanel = createLeftPanel();
-        mainContainer.add(leftPanel, BorderLayout.LINE_START);
+        mainContainer.add(leftPanel, BorderLayout.PAGE_END);
 
         Box rightPanel = createRightPanel();
         mainContainer.add(rightPanel, BorderLayout.PAGE_START);
 
         graphic = new FiguresGraphic();
         graphic.setBackground(Color.WHITE);
+        //graphic.setBounds(200, 200, 400, 400);
         mainContainer.add(graphic);
 
     }
@@ -126,11 +127,11 @@ public class FiguresFrame extends JFrame implements ActionListener{
         setColorYellow.setFont(Font.getFont(Font.SANS_SERIF));
 
         setColorBlue.addActionListener(e -> {
-            graphic.setFigureColor("Blue");
+            //graphic.setFigureColor("Blue");
             color = "Blue";
         });
         setColorYellow.addActionListener(e -> {
-            graphic.setFigureColor("Yellow");
+            //graphic.setFigureColor("Yellow");
             color = "Yellow";
         });
 
@@ -145,15 +146,6 @@ public class FiguresFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (makePolygon == true || makeCircle == true || makeTriangle == true){
             graphic.repaint();}
-        if (!makePolygon){
-
-        }
-        else if (!makeTriangle){
-
-        }
-        else if (!makeCircle){
-
-        }
     }
     public static void draw (Graphics g){
         if (makePolygon == true){

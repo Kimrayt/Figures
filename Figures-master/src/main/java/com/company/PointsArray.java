@@ -11,8 +11,9 @@ public class PointsArray {
 
     public static ArrayList createArray(int length){
         Random rng = new Random();
-        for (int i = 0; i<=length; i++){
-            points.add(new Point((rng.nextDouble()*i*30), (rng.nextDouble()*i*30)));
+        points.add(new Point((rng.nextDouble()*30), (rng.nextDouble()*30)));
+        for (int i = 0; i<=length-1; i++){
+            points.set(i, new Point((rng.nextDouble()*i*30), (rng.nextDouble()*i*30)));
         }
         return points;
     }
